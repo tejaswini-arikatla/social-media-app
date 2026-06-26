@@ -7,6 +7,11 @@ router.post("/", async (req, res) => {
 
     try {
 
+        if (!req.body.content || req.body.content.trim() === "") {
+            return res.status(400).json({
+                message: "Post cannot be empty"
+            });
+        }
         const newPost = new Post({
 
             username:
