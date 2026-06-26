@@ -103,6 +103,13 @@ router.put("/comment/:id", async (req,res)=>{
             });
         }
 
+        if (!req.body.text || req.body.text.trim() === "") {
+
+            return res.status(400).json({
+                message: "Comment cannot be empty"
+            });
+
+        }
         post.comments.push({
             text:req.body.text
         });
